@@ -56,7 +56,6 @@ class Polyline(object):
             return bckpI
         if "#" in lines[i + 1]:
             rule = lines[i + 1].replace("# ", "")
-            print("New rule: " + str(rule))
         else:
             return bckpI
         self.ruleTab.append(None)
@@ -66,7 +65,10 @@ class Polyline(object):
 
     def parse(self):
         i = 0
-        lines = [line.rstrip('\n') for line in open(self.filename)]
+        try:
+            lines = [line.rstrip('\n') for line in open(self.filename)]
+        except:
+            raise "Can't open file: " + self.filename
         while i < len(lines):
             curLine = lines[i]
             if "POLYLINE" in curLine:

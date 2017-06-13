@@ -27,7 +27,10 @@ class Rules(object):
 
     def parse(self):
         # todo try and except
-        lines = [line.rstrip('\n') for line in open(self.filename)]
+        try:
+            lines = [line.rstrip('\n') for line in open(self.filename)]
+        except:
+            raise "Can't open file: " + self.filename
         i = 0
         ruleNumber = 0
         while i < len(lines):
