@@ -8,6 +8,8 @@ from decimal import *
 #         return lines[i + 1]
 #     return -1
 
+ABS = 0
+ORD = 1
 
 class Polyline(object):
     def __init__(self, filename):
@@ -22,11 +24,11 @@ class Polyline(object):
         while i < len(self.polyVertex):
             out += "\tPolyline " + str(i + 1) + "\n"
             for coord in self.polyVertex[i]:
-                out += "x: " + str(coord[0]) + " y: " + str(coord[1]) + "\n"
+                out += "x: " + str(coord[ABS]) + " y: " + str(coord[ORD]) + "\n"
             i += 1
         out += "\nRules\n"
         for coord in self.ruleTab:
-            out += "x: " + str(coord[0]) + " y: " + str(coord[1]) + " rule: " + str(coord[2]) + "\n"
+            out += "x: " + str(coord[ABS]) + " y: " + str(coord[ORD]) + " rule: " + str(coord[2]) + "\n"
         return out
 
     def getPolyInfo(self, lines, i):
@@ -48,8 +50,8 @@ class Polyline(object):
         bckpI = i + 1
         if lines[i + 2] != "1":
             return i + 2
-        ordPoint = lines[i + 6]
         absPoint = lines[i + 4]
+        ordPoint = lines[i + 6]
         while i < len(lines) and "  1" not in lines[i]:
             i += 1
         if i >= len(lines):
@@ -59,7 +61,7 @@ class Polyline(object):
         else:
             return bckpI
         self.ruleTab.append(None)
-        self.ruleTab[len(self.ruleTab) - 1] = (Decimal(ordPoint), Decimal(absPoint), Decimal(rule))
+        self.ruleTab[len(self.ruleTab) - 1] = (Decimal(absPoint), Decimal(ordPoint), Decimal(rule))
         i += 2
         return i
 
