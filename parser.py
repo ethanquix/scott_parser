@@ -161,7 +161,7 @@ def main():
         if not os.path.exists(path + "/output"):
             os.makedirs(path + "/output")
     except:
-        raise RuntimeError("Can't create output directory at " + path)
+        raise RuntimeError("Can't create output directory at location ->" + path)
     # We fetch all .dxf or .DXF files inside the folder
     listFiles = getAllFileInFolder(path)
     # If none found then error
