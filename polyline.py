@@ -1,15 +1,8 @@
 from decimal import *
 
-
-# def getCoord(lines, i, to_find):
-#     while i < len(lines) and to_find not in lines[i]:
-#         i += 2
-#     if i + 1 < len(lines):
-#         return lines[i + 1]
-#     return -1
-
 ABS = 0
 ORD = 1
+
 
 class Polyline(object):
     def __init__(self, filename):
@@ -70,7 +63,7 @@ class Polyline(object):
         try:
             lines = [line.rstrip('\n') for line in open(self.filename)]
         except:
-            raise "Can't open file: " + self.filename
+            raise RuntimeError("Can't open file: " + self.filename)
         while i < len(lines):
             curLine = lines[i]
             if "POLYLINE" in curLine:
