@@ -13,7 +13,7 @@ class Rules(object):
         i = 0
         out = "Number of Sizes: " + str(self.sample_size) + "\nSize List: " + str(self.size_list) + "\n\n"
         while i < len(self.rules):
-            out += "\tRule " + str(i) + "\n"
+            out += "\tRule " + str(i + 1) + "\n"
             for coord in self.rules[i]:
                 out += "x: " + str(coord[0]) + " y: " + str(coord[1]) + "\n"
             i += 1
